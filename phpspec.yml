@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: GtcCommerce
+        psr4_prefix: GtcCommerce
+        src_path: app

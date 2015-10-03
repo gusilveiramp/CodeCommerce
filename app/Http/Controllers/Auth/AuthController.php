@@ -1,10 +1,10 @@
 <?php
 
-namespace GtcCommerce\Http\Controllers\Auth;
+namespace CodeCommerce\Http\Controllers\Auth;
 
-use GtcCommerce\User;
+use CodeCommerce\User;
 use Validator;
-use GtcCommerce\Http\Controllers\Controller;
+use CodeCommerce\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace GtcCommerce\Providers;
+namespace CodeCommerce\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'GtcCommerce\Events\SomeEvent' => [
-            'GtcCommerce\Listeners\EventListener',
+        'CodeCommerce\Events\SomeEvent' => [
+            'CodeCommerce\Listeners\EventListener',
         ],
     ];
 

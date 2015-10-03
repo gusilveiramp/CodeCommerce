@@ -140,10 +140,10 @@ return [
         /*
          * Application Service Providers...
          */
-        GtcCommerce\Providers\AppServiceProvider::class,
-        GtcCommerce\Providers\AuthServiceProvider::class,
-        GtcCommerce\Providers\EventServiceProvider::class,
-        GtcCommerce\Providers\RouteServiceProvider::class,
+        CodeCommerce\Providers\AppServiceProvider::class,
+        CodeCommerce\Providers\AuthServiceProvider::class,
+        CodeCommerce\Providers\EventServiceProvider::class,
+        CodeCommerce\Providers\RouteServiceProvider::class,
 
     ],
 

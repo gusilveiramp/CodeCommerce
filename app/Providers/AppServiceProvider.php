@@ -1,6 +1,6 @@
 <?php
 
-namespace GtcCommerce\Providers;
+namespace CodeCommerce\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

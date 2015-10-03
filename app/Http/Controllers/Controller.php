@@ -1,6 +1,6 @@
 <?php
 
-namespace GtcCommerce\Http\Controllers;
+namespace CodeCommerce\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

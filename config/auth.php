@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => GtcCommerce\User::class,
+    'model' => CodeCommerce\User::class,
 
     /*
     |--------------------------------------------------------------------------

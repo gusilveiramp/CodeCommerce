@@ -1,6 +1,6 @@
 <?php
 
-namespace GtcCommerce;
+namespace CodeCommerce;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;

@@ -1,6 +1,6 @@
 <?php
 
-namespace GtcCommerce\Console;
+namespace CodeCommerce\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \GtcCommerce\Console\Commands\Inspire::class,
+        \CodeCommerce\Console\Commands\Inspire::class,
     ];
 
     /**

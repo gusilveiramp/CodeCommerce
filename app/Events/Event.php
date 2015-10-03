@@ -1,6 +1,6 @@
 <?php
 
-namespace GtcCommerce\Events;
+namespace CodeCommerce\Events;
 
 abstract class Event
 {

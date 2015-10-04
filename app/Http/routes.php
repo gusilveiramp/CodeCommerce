@@ -35,7 +35,6 @@ Route::any('/exemplo2', function(){
 	return "oi";
 });
 
-
 Route::get('produtos', ['as'=>'produtos', function(){
 	echo Route::currentRouteName();
 	//return "Produtos";
@@ -51,14 +50,21 @@ Route::get('user/{id?}', function($id = 123){
 
 Route::put('exemplo', 'WelcomeController@exemplo');
 
-
 Route::get('category/{category}', function(\CodeCommerce\Category $category){
 	return $category->name;
 });
 */
+Route::get('admin/categories', ['as'=>'admin.categories', 'uses'=>'AdminCategoriesController@index']);
+Route::get('admin/products', ['as'=>'admin.products', 'uses'=>'AdminProductsController@index']);
+
+Route::get('categories', ['as'=>'categories', 'uses'=>'CategoriesController@index']);
+Route::post('categories', ['as'=>'categories.store', 'uses'=>'CategoriesController@store']);
+Route::get('categories/create', ['as'=>'categories.create', 'uses'=>'CategoriesController@create']);
+Route::get('categories/{id}/destroy', ['as'=>'categories.destroy', 'uses'=>'CategoriesController@destroy']);
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('exemplo', 'WelcomeController@exemplo');
+

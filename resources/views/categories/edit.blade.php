@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
 	<div class="container">
-		<h1>Create Category</h1>
+		<h1>Editing Category: {{$category->name}}</h1>
 
 		@if($errors->any())
 			<ul class="alert">
@@ -11,23 +11,23 @@
 			</ul>
 		@endif
 
-		{!! Form::open(['route'=>'categories.store']) !!}
+		{!! Form::open(['route'=>['categories.update', $category->id], 'method'=>'put']) !!}
 
 		<!-- Name Form Input -->
 		<div class="form-group">
 			{!! Form::label('name', 'Name:') !!}
-			{!! Form::text('name', null, ['class'=>'form-control']) !!}
+			{!! Form::text('name', $category->name, ['class'=>'form-control']) !!}
 		</div>
 
 		<!-- Description Form Input -->
 		<div class="form-group">
 			{!! Form::label('description', 'Description:') !!}
-			{!! Form::textarea('description', null, ['class'=>'form-control']) !!}
+			{!! Form::textarea('description', $category->description, ['class'=>'form-control']) !!}
 		</div>
 
 		<!-- Submit Button -->
 		<div class="form-group">
-			{!! Form::submit('Add Category', ['class'=>'btn btn-primary']) !!}
+			{!! Form::submit('Add Category', ['class'=>'btn btn-primary form-control']) !!}
 		</div>
 
 		{!! Form::close() !!}

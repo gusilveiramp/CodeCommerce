@@ -12,8 +12,8 @@ class WelcomeController extends Controller
     private $categories;
     //Aqui trabalhamos com Dependency Injection
     //Eu informo para a classe Construtora qual 
-    //a minha dependência(Category) e agora o Laravel
-    //vai injetalo na action, onde eu poderei utiliza-lo
+    //a minha dependência(Category) e o Laravel a
+    //injeta na action, onde eu poderei utilizar
     //de forma livre e desacoplada.
     public function __construct(Category $category)
     {

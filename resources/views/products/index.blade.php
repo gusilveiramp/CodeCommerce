@@ -5,19 +5,22 @@
 		<table class="table">
 			<tr>
 				<th>ID</th>
-				<th>Nome</th>
+				<th>Name</th>
 				<th>Description</th>
 				<th>Price</th>
+				<th>Category</th>
 				<th>Action</th>
 			</tr>
 			@foreach($products as $product)
 			<tr>
 				<td>{{ $product->id }}</td>
 				<td>{{ $product->name }}</td>
-				<td>{{ $product->description }}</td>
+				<td>{{ str_limit($product->description, $limit = 100, $end = '...') }}</td>
 				<td>{{ $product->price }}</td>
+				<td>{{ $product->category->name }}</td>
 				<td>
-					<a href="#">Delete</a>
+					<a href="{{ route('admin.products.edit', ['id'=>$product->id]) }}">Edit</a> | 
+					<a href="{{ route('admin.products.destroy', ['category'=>$product->id]) }}">Delete</a>
 				</td>
 			</tr>
 			@endforeach

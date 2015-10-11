@@ -11,7 +11,7 @@
 			</ul>
 		@endif
 
-		{!! Form::open(['route'=>'categories.store']) !!}
+		{!! Form::open(['route'=>'categories.store', 'method'=>'post']) !!}
 
 		<!-- Name Form Input -->
 		<div class="form-group">

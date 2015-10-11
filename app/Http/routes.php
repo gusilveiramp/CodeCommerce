@@ -11,14 +11,6 @@
 |
 */
 /*
-Route::group(['prefix'=> 'admin'], function(){
-
-	Route::get('products', function(){
-		return "Products";
-	});
-
-});
-
 Route::get('/exemplo2', function(){
 	return "Oi";
 });
@@ -54,8 +46,26 @@ Route::get('category/{category}', function(\CodeCommerce\Category $category){
 	return $category->name;
 });
 */
-Route::get('admin/categories', ['as'=>'admin.categories', 'uses'=>'AdminCategoriesController@index']);
-Route::get('admin/products', ['as'=>'admin.products', 'uses'=>'AdminProductsController@index']);
+
+Route::group(['prefix'=> 'admin/categories'], function(){
+	Route::get('/', ['as'=>'admin.categories', 'uses'=>'AdminCategoriesController@index']);
+	Route::post('/', ['as'=>'admin.categories.store', 'uses'=>'CategoriesController@store']);
+	Route::get('create', ['as'=>'admin.categories.create', 'uses'=>'AdminCategoriesController@create']);
+	Route::get('{id}/edit', ['as'=>'admin.categories.edit', 'uses'=>'AdminCategoriesController@edit']);
+	Route::put('{id}/update', ['as'=>'admin.categories.update', 'uses'=>'AdminCategoriesController@update']);
+	Route::get('{id}/destroy', ['as'=>'admin.categories.destroy', 'uses'=>'AdminCategoriesController@destroy']);
+});
+Route::group(['prefix'=> 'admin/products'], function(){
+	Route::get('/', ['as'=>'admin.products', 'uses'=>'AdminProductsController@index']);
+	Route::post('/', ['as'=>'admin.products.store', 'uses'=>'CategoriesController@store']);
+	Route::get('create', ['as'=>'admin.products.create', 'uses'=>'AdminProductsController@create']);
+	Route::get('{id}/edit', ['as'=>'admin.products.edit', 'uses'=>'AdminProductsController@edit']);
+	Route::put('{id}/update', ['as'=>'admin.products.update', 'uses'=>'AdminProductsController@update']);
+	Route::get('{id}/destroy', ['as'=>'admin.products.destroy', 'uses'=>'AdminProductsController@destroy']);
+});
+
+//Route::get('admin/categories', ['as'=>'admin.categories', 'uses'=>'AdminCategoriesController@index']);
+//Route::get('admin/products', ['as'=>'admin.products', 'uses'=>'AdminProductsController@index']);
 
 Route::get('categories', ['as'=>'categories', 'uses'=>'CategoriesController@index']);
 Route::post('categories', ['as'=>'categories.store', 'uses'=>'CategoriesController@store']);

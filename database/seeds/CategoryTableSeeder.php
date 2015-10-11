@@ -15,6 +15,6 @@ class CategoryTableSeeder extends Seeder
     {
         DB::table('categories')->truncate();//Trucante limpa a tabela de categorias
 
-       factory('CodeCommerce\Category', 15)->create();
+        factory('CodeCommerce\Category', 15)->create();
     }
 }

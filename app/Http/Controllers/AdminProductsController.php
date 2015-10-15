@@ -25,7 +25,7 @@ class AdminProductsController extends Controller
      */
     public function index()
     {
-        $products =  $this->productModel->all();
+        $products =  $this->productModel->paginate(10);
 
         return view('products.index', compact('products'));
     }
@@ -96,5 +96,9 @@ class AdminProductsController extends Controller
     public function destroy($id)
     {
         return "Olá, eu sou o destroy!";
+    }
+
+    public function images(){
+        return "Olá, eu sou o images!";   
     }
 }

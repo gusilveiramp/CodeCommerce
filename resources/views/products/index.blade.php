@@ -2,6 +2,9 @@
 @section('content')
 	<div class="container">
 		<h1>Products</h1>
+		<a href="{{ route('admin.products.create') }}", class="btn btn-default">New Product</a>
+		<br/>
+		<br/>
 		<table class="table">
 			<tr>
 				<th>ID</th>
@@ -25,5 +28,6 @@
 			</tr>
 			@endforeach
 		</table>
+		{!! $products->render() !!}
 	</div>
 @endsection

@@ -10,11 +10,11 @@ use Illuminate\Http\Request;
 
 class AdminCategoriesController extends Controller
 {
-    private $categoryModel;
+    private $model;
 
-    public function __construct(Category $categoryModel)
+    public function __construct(Category $category)
     {
-        $this->categoryModel = $categoryModel;
+        $this->model = $category;
     }
 
     /**
@@ -24,7 +24,7 @@ class AdminCategoriesController extends Controller
      */
     public function index()
     {
-        $categories =  $this->categoryModel->paginate(10);
+        $categories =  $this->model->paginate(10);
 
         return view('categories.index', compact('categories'));
     }
@@ -36,7 +36,7 @@ class AdminCategoriesController extends Controller
      */
     public function create()
     {
-        return "Olá, eu sou o create!";
+        return view('categories.create');
     }
 
     /**
@@ -45,20 +45,11 @@ class AdminCategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\CategoryRequest $request)
     {
-        return "Olá, eu sou o store!";
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return "Olá, eu sou o show!";
+        $this->model->create($request->all());
+        
+        return redirect()->route('admin.categories');
     }
 
     /**
@@ -69,7 +60,9 @@ class AdminCategoriesController extends Controller
      */
     public function edit($id)
     {
-        return "Olá, eu sou o edit!";
+        $category = $this->model->find($id);
+
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -79,9 +72,11 @@ class AdminCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Requests\CategoryRequest $request, $id)
     {
-        return "Olá, eu sou o update!";
+        $this->model->find($id)->update($request->all());
+
+        return redirect()->route('admin.categories');
     }
 
     /**
@@ -92,6 +87,8 @@ class AdminCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        return "Olá, eu sou o destroy!";
+        $this->model->find($id)->delete();
+
+        return redirect()->route('admin.categories');
     }
 }

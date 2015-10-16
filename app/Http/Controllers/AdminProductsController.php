@@ -3,19 +3,20 @@
 namespace CodeCommerce\Http\Controllers;
 
 use CodeCommerce\Category;
-use CodeCommerce\Product;
 use CodeCommerce\Http\Requests;
-use CodeCommerce\Http\Controllers\Controller;
+//use CodeCommerce\Http\Controllers\Controller;
+use CodeCommerce\Product;
+use CodeCommerce\ProductImage;
 
 use Illuminate\Http\Request;
 
 class AdminProductsController extends Controller
 {
-    private $productModel;
+    private $model;
 
-    public function __construct(Product $productModel)
+    public function __construct(Product $product)
     {
-        $this->productModel = $productModel;
+        $this->model = $product;
     }
 
     /**
@@ -25,7 +26,7 @@ class AdminProductsController extends Controller
      */
     public function index()
     {
-        $products =  $this->productModel->paginate(10);
+        $products =  $this->model->paginate(10);
 
         return view('products.index', compact('products'));
     }
@@ -37,6 +38,7 @@ class AdminProductsController extends Controller
      */
     public function create(Category $category) //method injection =  o Laravel injeta o objeto automaticamente para mim.
     {
+        // envio as categorias para a view products.create
         $categories = $category->lists('name', 'id');
 
         return view('products.create', compact('categories'));
@@ -48,20 +50,11 @@ class AdminProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\ProductRequest $request)
     {
-        return "Olá, eu sou o store!";
-    }
+        $this->model->create($request->all());
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return "Olá, eu sou o show!";
+        return redirect()->route('admin.products');
     }
 
     /**
@@ -70,9 +63,14 @@ class AdminProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Category $category)
     {
-        return "Olá, eu sou o edit!";
+        // envio as categorias para a view products.create
+        $categories = $category->lists('name', 'id');
+
+        $product = $this->model->find($id);
+
+        return view('products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -82,9 +80,15 @@ class AdminProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Requests\ProductRequest $request, $id)
     {
-        return "Olá, eu sou o update!";
+
+        $request['featured'] = $request->get('featured');
+        $request['recommended'] = $request->get('recommended');
+
+        $this->model->find($id)->update($request->all());
+
+        return redirect()->route('admin.products');
     }
 
     /**
@@ -95,7 +99,9 @@ class AdminProductsController extends Controller
      */
     public function destroy($id)
     {
-        return "Olá, eu sou o destroy!";
+        $this->model->find($id)->delete();
+
+        return redirect()->route('admin.products');
     }
 
     public function images(){

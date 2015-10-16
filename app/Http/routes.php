@@ -49,10 +49,12 @@ Route::get('category/{category}', function(\CodeCommerce\Category $category){
 
 Route::group(['prefix'=> 'admin', 'where'=>['id'=>'[0-9]+']], function(){
 
+	Route::get('', ['as'=>'admin', 'uses'=>'AdminProductsController@index']);
+
 	Route::group(['prefix'=> 'categories'], function(){
 
 		Route::get('', ['as'=>'admin.categories', 'uses'=>'AdminCategoriesController@index']);
-		Route::post('', ['as'=>'admin.categories.store', 'uses'=>'CategoriesController@store']);
+		Route::post('', ['as'=>'admin.categories.store', 'uses'=>'AdminCategoriesController@store']);
 		Route::get('create', ['as'=>'admin.categories.create', 'uses'=>'AdminCategoriesController@create']);
 		Route::get('{id}/edit', ['as'=>'admin.categories.edit', 'uses'=>'AdminCategoriesController@edit']);
 		Route::put('{id}/update', ['as'=>'admin.categories.update', 'uses'=>'AdminCategoriesController@update']);

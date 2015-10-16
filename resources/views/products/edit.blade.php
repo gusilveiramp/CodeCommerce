@@ -3,13 +3,7 @@
 	<div class="container">
 		<h1>Create Product</h1>
 
-		@if($errors->any())
-			<ul class="alert">
-				@foreach($errors->all() as $error)
-					<li>{{ $error }}</li>
-				@endforeach
-			</ul>
-		@endif
+		@include('errors.errors')
 		
 		{!! Form::open(['route'=>['admin.products.update', $product->id], 'method'=>'put']) !!}
 		
@@ -36,7 +30,7 @@
 			{!! Form::label('price', 'Price:') !!}
 			<div class="input-group">
 				<div class="input-group-addon">$</div>
-				{!! Form::input('number','price', $product->price, ['class'=>'form-control','placeholder'=>'00,00']) !!}
+				{!! Form::input('number','price', $product->price, ['class'=>'form-control','placeholder'=>'00']) !!}
 			</div>
 		</div>
 

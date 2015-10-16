@@ -18,6 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('name', 80);
             $table->text('description');
             $table->decimal('price', 6, 2);
+            $table->boolean('featured')->nullabe();
+            $table->boolean('recommended')->nullabe();
             $table->timestamps();
         });
     }

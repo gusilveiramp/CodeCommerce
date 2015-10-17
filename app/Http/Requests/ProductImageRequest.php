@@ -24,6 +24,7 @@ class ProductImageRequest extends Request
     public function rules()
     {
         return [
+            // só aceita arquivos jpeg, png, bmp, gif, or svg
             'image' => 'image'
         ];
     }

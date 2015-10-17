@@ -16,7 +16,7 @@
 		<!-- Submit Button -->
 		<div class="form-group">
 			{!! Form::submit('Upload Image', ['class'=>'btn btn-primary']) !!}
-			<a href="{{ route('admin.products') }}", class="btn btn-default">Back</a>
+			<a href="{{ route('admin.products.images', ['id'=>$product->id]) }}", class="btn btn-default">Back</a>
 		</div>
 
 		{!! Form::close() !!}

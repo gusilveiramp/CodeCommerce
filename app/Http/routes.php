@@ -11,35 +11,6 @@
 |
 */
 /*
-Route::get('/exemplo2', function(){
-	return "Oi";
-});
-
-Route::post('/exemplo2', function(){
-	return "Oi";
-});
-
-Route::match(['get','post'], '/exemplo2', function(){
-	return "oi";
-});
-
-Route::any('/exemplo2', function(){
-	return "oi";
-});
-
-Route::get('produtos', ['as'=>'produtos', function(){
-	echo Route::currentRouteName();
-	//return "Produtos";
-}]);
-
-Route::pattern('id','[0-9]+');
-
-Route::get('user/{id?}', function($id = 123){
-	if($id)
-		return "Olá, o ID é: ".$id;
-	return "Não possui ID";
-})->where('id','[A-Za-z0-9]+');
-
 Route::put('exemplo', 'WelcomeController@exemplo');
 
 Route::get('category/{category}', function(\CodeCommerce\Category $category){
@@ -84,12 +55,12 @@ Route::group(['prefix'=> 'admin', 'where'=>['id'=>'[0-9]+']], function(){
 
 });
 
-Route::get('categories', ['as'=>'categories', 'uses'=>'CategoriesController@index']);
+/*Route::get('categories', ['as'=>'categories', 'uses'=>'CategoriesController@index']);
 Route::post('categories', ['as'=>'categories.store', 'uses'=>'CategoriesController@store']);
 Route::get('categories/create', ['as'=>'categories.create', 'uses'=>'CategoriesController@create']);
 Route::get('categories/{id}/edit', ['as'=>'categories.edit', 'uses'=>'CategoriesController@edit']);
 Route::put('categories/{id}/update', ['as'=>'categories.update', 'uses'=>'CategoriesController@update']);
-Route::get('categories/{id}/destroy', ['as'=>'categories.destroy', 'uses'=>'CategoriesController@destroy']);
+Route::get('categories/{id}/destroy', ['as'=>'categories.destroy', 'uses'=>'CategoriesController@destroy']);*/
 
 Route::get('/', function () {
     return view('welcome');

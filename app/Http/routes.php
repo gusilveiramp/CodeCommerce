@@ -55,6 +55,15 @@ Route::group(['prefix'=> 'admin', 'where'=>['id'=>'[0-9]+']], function(){
 
 });
 
+Route::get('/', 'StoreController@index');
+Route::get('category/{id}', ['as'=>'store.category', 'uses'=>'StoreController@category']);
+Route::get('product/{id}', ['as'=>'store.product', 'uses'=>'StoreController@product']);
+Route::get('cart', ['as'=>'cart', 'uses'=>'CartController@index']);
+Route::get('cart/add/{id}', ['as'=>'cart.add', 'uses'=>'CartController@add']);
+Route::get('cart/remove/{id}', ['as'=>'cart.remove', 'uses'=>'CartController@remove']);
+Route::get('cart/destroy/{id}', ['as'=>'cart.destroy', 'uses'=>'CartController@destroy']);
+Route::get('checkout/placeOrder', ['as'=>'checkout.place', 'uses'=>'CheckoutController@place']);
+
 /*Route::get('categories', ['as'=>'categories', 'uses'=>'CategoriesController@index']);
 Route::post('categories', ['as'=>'categories.store', 'uses'=>'CategoriesController@store']);
 Route::get('categories/create', ['as'=>'categories.create', 'uses'=>'CategoriesController@create']);
@@ -62,9 +71,12 @@ Route::get('categories/{id}/edit', ['as'=>'categories.edit', 'uses'=>'Categories
 Route::put('categories/{id}/update', ['as'=>'categories.update', 'uses'=>'CategoriesController@update']);
 Route::get('categories/{id}/destroy', ['as'=>'categories.destroy', 'uses'=>'CategoriesController@destroy']);*/
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 
 Route::get('exemplo', 'WelcomeController@exemplo');
+
 

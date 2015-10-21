@@ -13,8 +13,8 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->truncate();//Trucante limpa a tabela de categorias
+        DB::table('categories');//Trucante limpa a tabela de categorias
 
-        factory('CodeCommerce\Category', 15)->create();
+        factory('CodeCommerce\Category', 3)->create();
     }
 }

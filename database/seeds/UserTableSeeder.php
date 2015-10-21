@@ -13,7 +13,7 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->truncate();
+        DB::table('users');
 
         /*factory('CodeCommerce\User')->create(
         	[
@@ -23,6 +23,6 @@ class UserTableSeeder extends Seeder
         	]
         );*/
 
-        factory('CodeCommerce\User', 10)->create();
+        factory('CodeCommerce\User', 3)->create();
     }
 }

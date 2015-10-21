@@ -34,6 +34,6 @@ $factory->define(CodeCommerce\Product::class, function (Faker\Generator $faker) 
         'price' => $faker->randomNumber(2),
         'featured' => $faker->boolean,
         'recommended' => $faker->boolean,
-        'category_id' => $faker->numberBetween(1, 15)
+        'category_id' => $faker->numberBetween(1, 3),
     ];
 });

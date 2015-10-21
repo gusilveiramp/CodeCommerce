@@ -13,8 +13,8 @@ class ProductTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('products')->truncate();//Trucante limpa a tabela de categorias
+        DB::table('products');//Trucante limpa a tabela de categorias
 
-       	factory('CodeCommerce\Product', 40)->create();
+       	factory('CodeCommerce\Product', 3)->create();
     }
 }

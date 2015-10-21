@@ -42,4 +42,22 @@ class Product extends Model
         // retorno as tags separando-as por virgula
         return implode(',', $tags);
     }
+
+    public function scopeFeatured($query)
+    {   
+        // pego os produtos da coluna featured que possuirem valor 1
+        return $query->where('featured','=',1);
+    }
+
+    public function scopeRecommended($query)
+    {   
+        // pego os produtos da coluna featured que possuirem valor 1
+        return $query->where('recommended','=',1);
+    }
+
+    // no scopeOf nós podemos passar argumentos ($type) como parametros na função.
+    public function scopeOfCategory($query, $type)
+    {
+        return $query->where('category_id','=', $type);
+    }
 }

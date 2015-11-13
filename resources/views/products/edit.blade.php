@@ -3,7 +3,7 @@
 	<div class="container">
 		<h1>Create Product</h1>
 
-		@include('errors.errors')
+		@include('alerts.alerts')
 		
 		{!! Form::open(['route'=>['admin.products.update', $product->id], 'method'=>'put']) !!}
 		

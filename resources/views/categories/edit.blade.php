@@ -3,7 +3,7 @@
 	<div class="container">
 		<h1>Editing Category: {{$category->name}}</h1>
 
-		@include('errors.errors')
+		@include('alerts.alerts')
 
 		{!! Form::open(['route'=>['admin.categories.update', $category->id], 'method'=>'put']) !!}
 

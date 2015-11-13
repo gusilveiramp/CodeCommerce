@@ -64,13 +64,6 @@ Route::get('cart/remove/{id}', ['as'=>'cart.remove', 'uses'=>'CartController@rem
 Route::get('cart/destroy/{id}', ['as'=>'cart.destroy', 'uses'=>'CartController@destroy']);
 Route::get('checkout/placeOrder', ['as'=>'checkout.place', 'uses'=>'CheckoutController@place']);
 
-/*Route::get('categories', ['as'=>'categories', 'uses'=>'CategoriesController@index']);
-Route::post('categories', ['as'=>'categories.store', 'uses'=>'CategoriesController@store']);
-Route::get('categories/create', ['as'=>'categories.create', 'uses'=>'CategoriesController@create']);
-Route::get('categories/{id}/edit', ['as'=>'categories.edit', 'uses'=>'CategoriesController@edit']);
-Route::put('categories/{id}/update', ['as'=>'categories.update', 'uses'=>'CategoriesController@update']);
-Route::get('categories/{id}/destroy', ['as'=>'categories.destroy', 'uses'=>'CategoriesController@destroy']);*/
-
 /*
 Route::get('/', function () {
     return view('welcome');

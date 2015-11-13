@@ -2,6 +2,7 @@
 @section('content')
 	<div class="container">
 		<h1>Products</h1>
+		@include('alerts.alerts')
 		<a href="{{ route('admin.products.create') }}", class="btn btn-default">New Product</a>
 		<br/>
 		<br/>

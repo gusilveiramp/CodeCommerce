@@ -3,7 +3,7 @@
 	<div class="container">
 		<h1>Upload Image</h1>
 
-		@include('errors.errors')
+		@include('alerts.alerts')
 
 		{!! Form::open(['route'=>['admin.products.images.store', $product->id], 'method'=>'post', 'enctype'=>"multipart/form-data"]) !!}
 		

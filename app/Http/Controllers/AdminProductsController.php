@@ -101,9 +101,28 @@ class AdminProductsController extends Controller
      */
     public function destroy($id)
     {
-        $this->model->find($id)->delete();
+        //$this->model->find($id)->delete();
 
-        return redirect()->route('admin.products');
+        //return redirect()->route('admin.products');
+
+        $product = $this->model->find($id);
+
+        if($product)
+        {
+            if($product->images)
+            {
+                foreach($product->images as $image){
+                    if(file_exists(public_path().'/uploads/'.$image->id.'.'.$image->extension))
+                    {
+                        Storage::disk('public_local')->delete($image->id.'.'.$image->extension);
+                    }
+                    $image->delete();
+                }
+            }
+            $product->delete();
+            return redirect()->route('admin.products')->withSuccess('Product deleted!');
+        }
+        return redirect()->route('admin.products')->withError('Product not exist!');
     }
 
     public function images($id)

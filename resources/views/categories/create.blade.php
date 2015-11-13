@@ -3,7 +3,7 @@
 	<div class="container">
 		<h1>Create Category</h1>
 
-		@include('errors.errors')
+		@include('alerts.alerts')
 
 		{!! Form::open(['route'=>'admin.categories.store', 'method'=>'post']) !!}
 

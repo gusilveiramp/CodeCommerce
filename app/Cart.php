@@ -35,6 +35,13 @@ class Cart
 		return $this->items;
 	}
 
+	public function removeItem($id)
+	{
+		$this->items[$id]['qtd']--;
+
+		return $this->items;
+	}
+
 	public function remove($id)
 	{
 		unset($this->items[$id]);
@@ -43,6 +50,13 @@ class Cart
 	public function all()
 	{
 		return $this->items;
+	}
+
+	public function getQtd($id)
+	{
+		$qtd = $this->items[$id]['qtd'];
+
+		return $qtd;
 	}
 
 	public function getTotal()

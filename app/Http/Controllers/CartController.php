@@ -79,7 +79,27 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       //
+    }
+
+    public function remove($id){
+
+        $cart = $this->getCart();
+
+        $qtd = $cart->getQtd($id);
+
+        if($qtd > 1){
+
+            $cart->removeItem($id);
+
+            Session::set('cart', $cart);
+
+            return redirect()->route('cart');
+
+        } else {
+
+            return redirect()->route('cart');
+        }
     }
 
     /**

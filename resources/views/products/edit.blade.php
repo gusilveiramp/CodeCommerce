@@ -1,4 +1,7 @@
 @extends('app')
+
+@include('products.partials._css')
+
 @section('content')
 	<div class="container">
 		<h1>Create Product</h1>
@@ -34,6 +37,13 @@
 			</div>
 		</div>
 
+		<!-- Input Tags -->
+		
+		{!! Form::label('tags', 'Tags:', ['class'=>'control-label']) !!}
+		<div class="form-group">
+		{!! Form::text('tags', $product->tagList, ['class'=>'form-control', 'data-role'=>'tagsinput', 'placeholder'=>'Insert your tags here...']) !!}
+		</div>
+
 		<!-- Feature Form Input -->
 		<div class="form-group">
 			{!! Form::label('featured', 'Featured:') !!}
@@ -45,10 +55,13 @@
 
 		<!-- Submit Button -->
 		<div class="form-group">
-			{!! Form::submit('Add Product', ['class'=>'btn btn-primary']) !!}
+			{!! Form::submit('Save Edit', ['class'=>'btn btn-primary']) !!}
 			<a href="{{ route('admin.products') }}", class="btn btn-default">Back</a>
 		</div>
 
 		{!! Form::close() !!}
 	</div>
+
 @endsection
+
+@include('products.partials._js')

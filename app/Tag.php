@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
+	protected $fillable = ['name'];
+
     public function products()
     {
-    	// pego todos os produtos relacionados a esta tag
-    	return $this->belongsToManu('CodeCommerce\Product');
+    	// Este metodo tráz os produtos relacionados a tag em questão.
+    	// 'posts_tags' é a tabela que está fazendo os relacionamentos.
+    	return $this->belongsToMany('CodeCommerce\Product', 'product_tag');
     }
 }

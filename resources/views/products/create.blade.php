@@ -1,4 +1,7 @@
 @extends('app')
+
+@include('products.partials._css')
+
 @section('content')
 	<div class="container">
 		<h1>Create Product</h1>
@@ -34,6 +37,13 @@
 				<div class="input-group-addon">.00</div>
 			</div>
 		</div>
+		
+		<!-- Input Tags -->
+		
+		{!! Form::label('tags', 'Tags:', ['class'=>'control-label']) !!}
+		<div class="form-group">
+		{!! Form::text('tags', null, ['class'=>'tags form-control', 'data-role'=>'tagsinput', 'placeholder'=>'Insert your tags here...']) !!}
+		</div>
 
 		<!-- Feature Form Input -->
 		<div class="form-group">
@@ -51,4 +61,7 @@
 
 		{!! Form::close() !!}
 	</div>
+
 @endsection
+
+@include('products.partials._js')

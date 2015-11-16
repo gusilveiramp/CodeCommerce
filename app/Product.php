@@ -27,20 +27,24 @@ class Product extends Model
     	return $this->belongsTo('CodeCommerce\Category');
     }
 
+    // Este metodo tráz as tags relacionadas ao produto em questão.
     public function tags()
     {
         // digo que minhas tags dentro desse meu produto podem pertencer a outras tags e outros produtos também podem ter essas tags.
         // por isso utilizamos belongsToMany.
-        return $this->belongsToMany('CodeCommerce\Tag');
+        // 'product_tag' é a tabela que está fazendo os relacionamentos.
+        return $this->belongsToMany('CodeCommerce\Tag', 'product_tag');
     }
 
+    // Este método exibe as tags vindas do bd na view edit.blade.php e create.blade.php.
+    // getTagListAttribute é um atributo dinamico, portanto as palavras get e Attribute são obrigatórias no nome da função.
+    // e o nome que vai entre elas (TagList, nesse caso), é o nome do nosso atributo dinâmico.
     public function getTagListAttribute()
     {
-        //seleciono a tag pelo nome usando o lists, onde ele retorna uma lista do que nós queremos.
-        $tags = $this->tags->lists('name');
-
-        // retorno as tags separando-as por virgula
-        return implode(',', $tags);
+        // crio uma lista dos nomes de tags e mando trazer todos em array pelo all();
+        $tags = $this->tags()->lists('name')->all();
+        // retorno as tags separadas por uma virgula e um espaço.
+        return implode(', ', $tags);
     }
 
     public function scopeFeatured($query)

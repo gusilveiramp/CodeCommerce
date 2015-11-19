@@ -40,7 +40,7 @@ class User extends Model implements AuthenticatableContract,
     // relacionamento entre user e pedidos(orders)
     public function orders()
     {
-        // digo que um usuário pode ter muitos pedidos(orders)
+        // digo que um usuário pode ter muitos pedidos(orders) relacionados a ele
         return $this->hasMany('CodeCommerce\Order');
     }
 }

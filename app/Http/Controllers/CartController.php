@@ -99,6 +99,7 @@ class CartController extends Controller
         } else {
 
             return redirect()->route('cart');
+        
         }
     }
 

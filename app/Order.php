@@ -19,7 +19,7 @@ class Order extends Model
     	return $this->hasMany('CodeCommerce\OrderItem');
     }
 
-    // relacionamento entre Order e Usuario
+    // relacionamento entre Order e Usuário
     public function user()
     {
     	return $this->belongsTo('CodeCommerce\User');

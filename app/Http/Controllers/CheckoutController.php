@@ -15,13 +15,13 @@ class CheckoutController extends Controller
 
     public function place(Order $orderModel, OrderItem $orderItem)
     {
-        // se não existir carrinho
+        // se não existir carrinho na sessão
         if (!Session::has('cart')) {
             // retorna false
             return false;
         }
 
-        // se não, pega os valores gravados na sessao cart
+        // pega os valores gravados na sessão cart
         $cart = Session::get('cart');
 
         // se o total de items for maior que 0
@@ -35,7 +35,6 @@ class CheckoutController extends Controller
             }
 
         }
-
 
     }
 

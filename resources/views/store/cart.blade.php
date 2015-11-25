@@ -63,7 +63,7 @@
                                     TOTAL: R$ {{ $cart->getTotal() }}
                                 </span>
 
-                                <a href="#" class="btn btn-success">Go to checkout</a>
+                                <a href="{{route('checkout.place')}}" class="btn btn-success">Go to checkout</a>
                             </div>
                         </td>
                     </tr>

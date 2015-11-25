@@ -14,15 +14,17 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         DB::table('users');
-
-        /*factory('CodeCommerce\User')->create(
+        
+        // cria um usuário específico.
+        factory('CodeCommerce\User')->create(
         	[
-        		'name'=>'Gustavo',
-        		'email'=>'gdsmp@hotmail.com',
-        		'password'=>Hash::make(123456),
+        		'name' => 'Gustavo',
+                'email' => 'admin@admin.com',
+                'password' => bcrypt(123123),
+                'remember_token' => str_random(10),
         	]
-        );*/
-
+        );
+        
         factory('CodeCommerce\User', 3)->create();
     }
 }

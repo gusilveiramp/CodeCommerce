@@ -20,6 +20,7 @@ class AdminProductsController extends Controller
 
     public function __construct(Product $product)
     {
+        //atribuo o model a variavel $product
         $this->model = $product;
     }
 

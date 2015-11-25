@@ -13,8 +13,13 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'CodeCommerce\Events\SomeEvent' => [
-            'CodeCommerce\Listeners\EventListener',
+        //CheckoutEvent é o meu evento, que foi criado na pasta Events
+        'CodeCommerce\Events\CheckoutEvent' => [
+            //SendEmailCheckout é o Listener pertencente ao evento acima, que é o CheckoutEvent()
+            // um evento pode ter mais de um listener. No caso temos apenas 1.
+            // Sempre que eu chamar o helper event() todos os listeners do evento serão disparados.
+            // o metodo que dispara os listeners é o Event::fire(), porém podemos usar apenas event() que dá na mesma.
+            'CodeCommerce\Listeners\SendEmailCheckout',
         ],
     ];
 

@@ -10,15 +10,27 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+
 /*
 Route::put('exemplo', 'WelcomeController@exemplo');
 
 Route::get('category/{category}', function(\CodeCommerce\Category $category){
 	return $category->name;
 });
+
+Route::get('/', function () {
+    return view('welcome');
+});
 */
 
-Route::group(['prefix'=> 'admin', 'where'=>['id'=>'[0-9]+']], function(){
+// Route::controllers significa que ele vai ler os controllers em questão e vai pegar todos os metodos deste
+// controller e torna-los acessíveis. 
+Route::controllers([
+	'auth'=>'Auth\AuthController',
+	'password'=>'Auth\PasswordController',
+]);
+
+Route::group(['prefix'=> 'admin', 'middleware'=>'auth', 'where'=>['id'=>'[0-9]+']], function(){
 
 	Route::get('', ['as'=>'admin', 'uses'=>'AdminProductsController@index']);
 
@@ -56,20 +68,27 @@ Route::group(['prefix'=> 'admin', 'where'=>['id'=>'[0-9]+']], function(){
 });
 
 Route::get('/', 'StoreController@index');
+Route::get('home', 'StoreController@index');
 Route::get('category/{id}', ['as'=>'store.category', 'uses'=>'StoreController@category']);
 Route::get('product/{id}', ['as'=>'store.product', 'uses'=>'StoreController@product']);
 Route::get('cart', ['as'=>'cart', 'uses'=>'CartController@index']);
 Route::get('cart/add/{id}', ['as'=>'cart.add', 'uses'=>'CartController@add']);
 Route::get('cart/remove/{id}', ['as'=>'cart.remove', 'uses'=>'CartController@remove']);
 Route::get('cart/destroy/{id}', ['as'=>'cart.destroy', 'uses'=>'CartController@destroy']);
-Route::get('checkout/placeOrder', ['as'=>'checkout.place', 'uses'=>'CheckoutController@place']);
+
+//Precisa estar autenticado para acessar
+Route::group(['middleware'=>'auth'], function(){
+	Route::get('checkout/placeOrder', ['as'=>'checkout.place', 'uses'=>'CheckoutController@place']);
+	Route::get('account/orders', ['as'=>'account.orders', 'uses'=>'AccountController@orders']);
+});
 
 /*
-Route::get('/', function () {
-    return view('welcome');
+Route::get('evento', function(){
+	// Disparo o evento CheckoutEvent()
+	// Sempre que eu chamar o helper event() todos os listeners do evento serão disparados.
+    // o metodo que dispara os listeners é o Event::fire(), porém podemos usar apenas event() que dá na mesma.
+	Event(new \CodeCommerce\Events\CheckoutEvent());
 });
 */
-
-Route::get('exemplo', 'WelcomeController@exemplo');
 
 

@@ -1,0 +1,8 @@
+Caro Professor, 
+
+Por favor, não se esqueça que a tabela order_items está relacionada a tabela orders_table, portanto o  arquivo 2015_11_19_190124_create_order_items_table.php deve ser executado SOMENTE APÓS o arquivo 2015_11_19_190106_create_orders_table.php.
+
+Remova o arquivo 2015_11_19_190124_create_order_items_table.php da pasta antes de rodar as migrations, depois rode-o separadamente, caso contrário ele apresentará um erro.
+
+Obrigado!
+

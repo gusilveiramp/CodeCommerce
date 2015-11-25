@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +7,7 @@
     <meta name="author" content="">
     <title>Home | E-Shop</title>
    
-    {!!Html::style('css/bootstrap.min.css')!!}
-    {!!Html::style('css/font-awesome.min.css')!!}
-    {!!Html::style('css/prettyPhoto.css')!!}
-    {!!Html::style('css/animate.css')!!}
-    {!!Html::style('css/main.css')!!}
-    {!!Html::style('css/responsive.css.css')!!}
+    <link href="{{ elixir('css/all.css') }}" rel="stylesheet">
 
 </head><!--/head-->
 
@@ -26,7 +20,7 @@
                     <div class="contactinfo">
                         <ul class="nav nav-pills">
                             <li><a href="#"><i class="fa fa-phone"></i> (19) 5555-5555</a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i> atendimento@schoolofnet.com</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i> atendimento@codecommerce.com</a></li>
                         </ul>
                     </div>
                 </div>
@@ -55,10 +49,14 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-user"></i> Minha conta</a></li>
-                            <li><a href="http://commerce.dev:10088/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                            <li><a href="http://commerce.dev:10088/cart"><i class="fa fa-shopping-cart"></i> Carrinho</a></li>
-                            <li><a href="http://commerce.dev:10088/auth/login"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="{{ route('account.orders') }}"><i class="fa fa-user"></i> My account</a></li>
+                            <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            <li><a href="/auth/register"><i class="fa fa-lock"></i> Register</a></li>
+                            @if(Auth::guest())
+                            <li><a href="/auth/login"><i class="fa fa-lock"></i> Login</a></li>
+                            @else
+                            <li><a href="/auth/logout"><i class="fa fa-lock"></i> Logout ({{Auth::user()->name}})</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -143,10 +141,7 @@
 
 </footer><!--/Footer-->
 
-{!!Html::script('js/jquery.js')!!}
-{!!Html::script('bootstrap.min.js')!!}
-{!!Html::script('js/jquery.scrollUp.min.js')!!}
-{!!Html::script('js/jquery.prettyPhoto.js')!!}
-{!!Html::script('js/main.js')!!}
+<script src="{{ elixir('js/all.js') }}"></script>
+
 </body>
 </html>

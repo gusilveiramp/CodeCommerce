@@ -69,4 +69,9 @@ class Cart
 		return $total;
 	}
 
+	public function clear()
+	{
+		$this->items = [];
+	}
+
 }

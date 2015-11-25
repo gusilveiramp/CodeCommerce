@@ -37,10 +37,10 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
-    // relacionamento entre user e pedidos(orders)
+    // Relacionamento entre user e pedidos(orders)
     public function orders()
     {
-        // digo que um usuário pode ter muitos pedidos(orders) relacionados a ele
+        // Digo que um usuário pode ter muitos pedidos(orders) relacionados a ele
         return $this->hasMany('CodeCommerce\Order');
     }
 }

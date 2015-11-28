@@ -4,7 +4,7 @@
 
 @section('content')
 	<div class="container">
-		<h1>Create Product</h1>
+		<h1>Edit Product</h1>
 
 		@include('alerts.alerts')
 		
@@ -38,10 +38,9 @@
 		</div>
 
 		<!-- Input Tags -->
-		
 		{!! Form::label('tags', 'Tags:', ['class'=>'control-label']) !!}
 		<div class="form-group">
-		{!! Form::text('tags', $product->tagList, ['class'=>'form-control', 'data-role'=>'tagsinput', 'placeholder'=>'Insert your tags here...']) !!}
+		{!! Form::text('tags', $product->tagList, ['class'=>'form-control', 'data-provide'=>'typeahead', 'placeholder'=>'Insert your tags here...']) !!}
 		</div>
 
 		<!-- Feature Form Input -->

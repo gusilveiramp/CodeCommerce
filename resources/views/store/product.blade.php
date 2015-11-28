@@ -48,6 +48,12 @@
             </div>
             <!--/product-information-->
         </div>
+        <div class="col-sm-7">
+            <h2>Tags</h2>
+            @foreach($product->tags as $tag)
+                <a href="{{ route('store.tag', ['id'=>$tag->id]) }}"><span class="label label-info">{{$tag->name}}</span></a>
+            @endforeach
+        </div>
     </div>
     <!--/product-details-->
 </div>

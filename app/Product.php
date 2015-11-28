@@ -39,6 +39,7 @@ class Product extends Model
     // Este método exibe as tags vindas do bd na view edit.blade.php e create.blade.php.
     // getTagListAttribute é um atributo dinamico, portanto as palavras get e Attribute são obrigatórias no nome da função.
     // e o nome que vai entre elas (TagList, nesse caso), é o nome do nosso atributo dinâmico.
+    // ESSA FUNÇÃO É RESPONSÁVEL POR LISTAR E DAR O IMPLODE, APENAS ISSO. SEM ELA AS TAGS AINDA SERIAM EXIBIDAS, PORÉM, SEM TRATAMENTO.
     public function getTagListAttribute()
     {
         // crio uma lista dos nomes de tags e mando trazer todos em array pelo all();
@@ -47,6 +48,7 @@ class Product extends Model
         return implode(', ', $tags);
     }
 
+    // ESSA FUNÇÃO É PRATICA QUANDO QUEREMOS COMPARAR VALORES DE COLUNAS DE UMA MESMA TABELA.
     public function scopeFeatured($query)
     {   
         // pego os produtos da coluna featured que possuirem valor 1

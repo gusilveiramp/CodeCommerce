@@ -71,6 +71,7 @@ Route::get('/', 'StoreController@index');
 Route::get('home', 'StoreController@index');
 Route::get('category/{id}', ['as'=>'store.category', 'uses'=>'StoreController@category']);
 Route::get('product/{id}', ['as'=>'store.product', 'uses'=>'StoreController@product']);
+Route::get('tag/{id}', ['as'=>'store.tag', 'uses'=>'TagController@index']);
 Route::get('cart', ['as'=>'cart', 'uses'=>'CartController@index']);
 Route::get('cart/add/{id}', ['as'=>'cart.add', 'uses'=>'CartController@add']);
 Route::get('cart/remove/{id}', ['as'=>'cart.remove', 'uses'=>'CartController@remove']);
@@ -81,6 +82,8 @@ Route::group(['middleware'=>'auth'], function(){
 	Route::get('checkout/placeOrder', ['as'=>'checkout.place', 'uses'=>'CheckoutController@place']);
 	Route::get('account/orders', ['as'=>'account.orders', 'uses'=>'AccountController@orders']);
 });
+
+Route::get('test', 'CheckoutController@test');
 
 /*
 Route::get('evento', function(){

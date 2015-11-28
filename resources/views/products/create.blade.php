@@ -42,7 +42,8 @@
 		
 		{!! Form::label('tags', 'Tags:', ['class'=>'control-label']) !!}
 		<div class="form-group">
-		{!! Form::text('tags', null, ['class'=>'tags form-control', 'data-role'=>'tagsinput', 'placeholder'=>'Insert your tags here...']) !!}
+		{!! Form::text('tags', null, ['class'=>'form-control', 'data-provide'=>'typeahead', 'placeholder'=>'Insert your tags here...']) 
+		!!}
 		</div>
 
 		<!-- Feature Form Input -->

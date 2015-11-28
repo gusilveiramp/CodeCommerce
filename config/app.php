@@ -135,9 +135,11 @@ return [
         Illuminate\Session\SessionServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
+        /*
+         * Custom Framework Service Providers...
+         */
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
-
         /*
          * Application Service Providers...
          */
@@ -145,6 +147,10 @@ return [
         CodeCommerce\Providers\AuthServiceProvider::class,
         CodeCommerce\Providers\EventServiceProvider::class,
         CodeCommerce\Providers\RouteServiceProvider::class,
+        /*
+         * Custom Aplication Service Providers...
+         */
+        LaravelPagseguro\LaravelPagseguroServiceProvider::class,
 
     ],
 
@@ -194,6 +200,9 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+        /*
+         * Custom Facades
+         */
         'Form'      => Illuminate\Html\FormFacade::class,
         'Html'      => Illuminate\Html\HtmlFacade::class,
     ],

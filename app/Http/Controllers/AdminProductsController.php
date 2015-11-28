@@ -4,7 +4,7 @@ namespace CodeCommerce\Http\Controllers;
 
 use CodeCommerce\Category;
 use CodeCommerce\Http\Requests;
-//use CodeCommerce\Http\Controllers\Controller;
+use CodeCommerce\Http\Controllers\Controller;
 use CodeCommerce\Product;
 use CodeCommerce\Tag;
 use CodeCommerce\ProductImage;
@@ -41,12 +41,14 @@ class AdminProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Category $category) //method injection =  o Laravel injeta o objeto automaticamente para mim.
+    public function create(Category $category, Tag $tag) //method injection =  o Laravel injeta o objeto automaticamente para mim.
     {
         // envio as categorias para a view products.create
         $categories = $category->lists('name', 'id');
 
-        return view('products.create', compact('categories'));
+        $tags = $tag->lists('name');
+
+        return view('products.create', compact('categories', 'tags'));
     }
 
     /**
@@ -74,14 +76,16 @@ class AdminProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, Category $category)
+    public function edit($id, Category $category, Tag $tag)
     {
         // envio as categorias para a view products.create
         $categories = $category->lists('name', 'id');
 
         $product = $this->model->find($id);
 
-        return view('products.edit', compact('product', 'categories'));
+        $tags = $tag->lists('name');
+
+        return view('products.edit', compact('product', 'categories', 'tags'));
     }
 
     /**

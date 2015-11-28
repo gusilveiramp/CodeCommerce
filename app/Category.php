@@ -10,7 +10,7 @@ class Category extends Model
 
     public function products()
     {
-    	//Lista os produtos da categoria respectiva
+    	//Com isso eu acesso todos os items referentes a essa categoria.
     	return $this->hasMany('CodeCommerce\products');
     }
 }

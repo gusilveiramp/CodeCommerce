@@ -7,21 +7,12 @@
 
 		{!! Form::open(['route'=>'admin.categories.store', 'method'=>'post']) !!}
 
-		<!-- Name Form Input -->
-		<div class="form-group">
-			{!! Form::label('name', 'Name:') !!}
-			{!! Form::text('name', null, ['class'=>'form-control']) !!}
-		</div>
-
-		<!-- Description Form Input -->
-		<div class="form-group">
-			{!! Form::label('description', 'Description:') !!}
-			{!! Form::textarea('description', null, ['class'=>'form-control']) !!}
-		</div>
+		@include('categories.partials._form')
 
 		<!-- Submit Button -->
 		<div class="form-group">
 			{!! Form::submit('Add Category', ['class'=>'btn btn-primary']) !!}
+			<a href="{{ route('admin.categories') }}", class="btn btn-default">Back</a>
 		</div>
 
 		{!! Form::close() !!}

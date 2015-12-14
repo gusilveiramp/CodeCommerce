@@ -1,6 +1,6 @@
 <?php
 
-namespace CodeCommerce\Http\Controllers;
+namespace CodeCommerce\Http\Controllers\Admin;
 
 use CodeCommerce\Category;
 use CodeCommerce\Http\Requests;

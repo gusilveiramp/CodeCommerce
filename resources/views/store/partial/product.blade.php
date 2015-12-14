@@ -1,4 +1,4 @@
- @foreach($products as $product)
+ @forelse($products as $product)
  <div class="col-sm-4">
     <div class="product-image-wrapper">
         <div class="single-products">
@@ -9,7 +9,7 @@
                 <img src="{{ url('images/no-img.jpg') }}" width="200" alt="" />
             @endif
                 <h2>R$ {{ $product->price }}</h2>
-                <p>{{ $product->name }}</p>
+                <p><strong>{{ $product->name }}</strong></p>
                 <a href="{{ route('store.product', ['id'=>$product->id]) }}" class="btn btn-default add-to-cart"><i class="fa fa-crosshairs"></i>Mais detalhes</a>
                 <a href="{{ route('cart.add', ['id'=>$product->id]) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Adicionar no carrinho</a>
             </div>
@@ -25,4 +25,12 @@
         </div>
     </div>
 </div>
-@endforeach
+@empty
+    <div class="col-sm-4">
+        <div class="product-image-wrapper">
+            <div class="single-products">
+            <h3>Sorry, nothing found...</h3>
+            </div>
+        </div>
+    </div>
+@endforelse

@@ -3,9 +3,26 @@
 namespace CodeCommerce;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\SluggableInterface; // Pacote para Slug
+use Cviebrock\EloquentSluggable\SluggableTrait; // Pacote para Slug
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Product extends Model
+class Product extends Model implements SluggableInterface
 {
+    use SluggableTrait, SoftDeletes;
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+
+    protected $sluggable = [
+        'build_from' => 'name',
+        'save_to'    => 'slug',
+    ];
+
     protected $fillable = [
     	'category_id',
     	'name', 
@@ -59,6 +76,12 @@ class Product extends Model
     {   
         // pego os produtos da coluna featured que possuirem valor 1
         return $query->where('recommended','=',1);
+    }
+
+    public function scopeOfSearch($query, $keyword)
+    {   
+        // pego os produtos com base na keyword
+        return $query->where('name','like','%'.$keyword.'%');
     }
 
     // no scopeOf nós podemos passar argumentos ($type) como parametros na função.

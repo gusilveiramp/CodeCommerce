@@ -2,7 +2,9 @@
 
 namespace CodeCommerce\Http\Controllers;
 
-use CodeCommerce\Http\Requests;
+//use CodeCommerce\Http\Requests; //Apagar...Não está sendo usado
+//use CodeCommerce\Http\Controllers\Controller; //Apagar...Não está sendo usada
+//use Illuminate\Http\Request; 
 use CodeCommerce\Category;
 use CodeCommerce\Product;
 
@@ -66,5 +68,18 @@ class StoreController extends Controller
         //$product = Product::find($id);
 
         return view('store.product', compact('categories','product'));
+    }
+
+    public function search()
+    {
+        // seleciono todas as categorias do bd
+        $categories = $this->categoryModel->all();
+        //$categories = Category::all();
+
+        $keyword = \Request::get('keyword'); //<-- we use global request to get the param of URI
+
+        $products = $this->productModel->ofSearch($keyword)->orderBy('name')->paginate(10);
+     
+        return view('store.search',compact('products', 'categories'));
     }
 }

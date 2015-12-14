@@ -67,7 +67,7 @@
     <div class="header-bottom"><!--header-bottom-->
         <div class="container">
             <div class="row">
-                <div class="col-sm-9">
+                <div class="col-sm-8">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                             <span class="sr-only">Toggle navigation</span>
@@ -93,9 +93,12 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="search_box pull-right">
-                        <input type="text" placeholder="Buscar"/>
+                        {!! Form::open(array('method' => 'get', 'route' => 'store.search', 'class'=>'form navbar-form navbar-right')) !!}
+                            {!!Form::text('keyword', null, array('placeholder'=>'search by keyword'))!!}
+                            {!!Form::submit('search')!!}
+                        {!!Form::close()!!}
                     </div>
                 </div>
             </div>
@@ -127,9 +130,6 @@
 
 <footer id="footer"><!--Footer-->
 
-
-
-
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
@@ -142,6 +142,8 @@
 </footer><!--/Footer-->
 
 <script src="{{ elixir('js/all.js') }}"></script>
+
+@yield('post-script')
 
 </body>
 </html>

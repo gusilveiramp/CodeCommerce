@@ -151,7 +151,8 @@ return [
          * Custom Aplication Service Providers...
          */
         LaravelPagseguro\LaravelPagseguroServiceProvider::class,
-
+        Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
+        Cagartner\CorreiosConsulta\ServiceProvider::class,
     ],
 
     /*
@@ -205,6 +206,7 @@ return [
          */
         'Form'      => Illuminate\Html\FormFacade::class,
         'Html'      => Illuminate\Html\HtmlFacade::class,
+        'Correios'  => Cagartner\CorreiosConsulta\Facade::class,
     ],
 
 ];

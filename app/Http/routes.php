@@ -24,13 +24,14 @@ Route::get('/', function () {
 */
 
 // Route::controllers significa que ele vai ler os controllers em questão e vai pegar todos os metodos deste
-// controller e torna-los acessíveis. 
+// controller e torna-los acessíveis.
+
 Route::controllers([
 	'auth'=>'Auth\AuthController',
 	'password'=>'Auth\PasswordController',
 ]);
 
-Route::group(['prefix'=> 'admin', 'middleware'=>'auth', 'where'=>['id'=>'[0-9]+']], function(){
+Route::group(['namespace'=>'Admin', 'prefix'=> 'admin', 'middleware'=>'auth', 'where'=>['id'=>'[0-9]+']], function(){
 
 	Route::get('', ['as'=>'admin', 'uses'=>'AdminProductsController@index']);
 
@@ -42,7 +43,6 @@ Route::group(['prefix'=> 'admin', 'middleware'=>'auth', 'where'=>['id'=>'[0-9]+'
 		Route::get('{id}/edit', ['as'=>'admin.categories.edit', 'uses'=>'AdminCategoriesController@edit']);
 		Route::put('{id}/update', ['as'=>'admin.categories.update', 'uses'=>'AdminCategoriesController@update']);
 		Route::get('{id}/destroy', ['as'=>'admin.categories.destroy', 'uses'=>'AdminCategoriesController@destroy']);
-	
 	});
 
 	Route::group(['prefix'=> 'products'], function(){
@@ -60,17 +60,15 @@ Route::group(['prefix'=> 'admin', 'middleware'=>'auth', 'where'=>['id'=>'[0-9]+'
 			Route::get('create/{id}/product', ['as'=>'admin.products.images.create', 'uses'=>'AdminProductsController@createImage']);
 			Route::post('store/{id}/product', ['as'=>'admin.products.images.store', 'uses'=>'AdminProductsController@storeImage']);
 			Route::get('destroy/{id}/product', ['as'=>'admin.products.images.destroy', 'uses'=>'AdminProductsController@destroyImage']);
-
 		});
-		
 	});
-
 });
 
 Route::get('/', 'StoreController@index');
 Route::get('home', 'StoreController@index');
 Route::get('category/{id}', ['as'=>'store.category', 'uses'=>'StoreController@category']);
 Route::get('product/{id}', ['as'=>'store.product', 'uses'=>'StoreController@product']);
+Route::get('search',['as'=>'store.search', 'uses'=>'StoreController@search']);
 Route::get('tag/{id}', ['as'=>'store.tag', 'uses'=>'TagController@index']);
 Route::get('cart', ['as'=>'cart', 'uses'=>'CartController@index']);
 Route::get('cart/add/{id}', ['as'=>'cart.add', 'uses'=>'CartController@add']);
@@ -83,7 +81,10 @@ Route::group(['middleware'=>'auth'], function(){
 	Route::get('account/orders', ['as'=>'account.orders', 'uses'=>'AccountController@orders']);
 });
 
-Route::get('test', 'CheckoutController@test');
+Route::post('test', ['as'=>'checkout.frete', 'uses'=>'CheckoutController@test']);
+
+Route::get('get-fretes/{cep}', ['as'=>'cart.destroy', 'uses'=>'CheckoutController@getFretes']);
+
 
 /*
 Route::get('evento', function(){

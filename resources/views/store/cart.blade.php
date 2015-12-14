@@ -3,6 +3,7 @@
 @section('content')
     <section id="cart_items">
     	<div class="container">
+        @include('alerts.alerts')
     		<div class="table-responsive cart_info">
     			<table class="table table-condensed">
     				<thead>
@@ -71,6 +72,103 @@
     				</tbody>
     			</table>
     		</div>
+            
+            <!--/*{!! Form::label('cep', 'CEP:') !!}
+            {!! Form::text('cep', null, ['class'=>'form-control']) !!}
+            <button type="button" id="calculate" class="btn btn-danger btn-block">Calculate</button>
+            <div id="loader" style="display:none;">Carregando opções de envio... Por favor, aguarde.</div>
+
+            {!! Form::open(['route'=>'admin.products.store', 'method'=>'post']) !!}
+            <div class="form-group">
+                <select name="frete">            
+                </select>
+            </div>
+            {!! Form::close() !!}
+            */-->
+
     	</div>
     </section>
-@stop
+@endsection
+
+@section('post-script')
+    <script type="text/javascript">
+    /*$(document).ready(function() {
+
+        $("select[name=frete]").hide();
+
+        //$('#cep').focusout(function(e){
+        $('#calculate').click(function(e){
+
+            var value=$.trim($("#cep").val());
+
+            if (value  === '') {
+                alert('Por favor, informe um CEP.');
+                return false;
+            }
+
+            $("#loader").show();
+
+            var cep = $('#cep').val(); //pego o valor do id selecionado
+            $.get('/get-fretes/' + cep, function(frete){ //passo a url com o cep que eu peguei acima
+                
+                var erropac = frete.pac.erro.codigo;
+                var errosedex = frete.sedex.erro.codigo;
+                var errosedex10 = frete.sedex10.erro.codigo;
+                var errosedexhoje = frete.sedexhoje.erro.codigo;
+
+                $('select[name=frete]').empty(); // limpo ela com a função empty
+                if(erropac == 0){
+                    $('select[name=frete]').append($('<option>', {
+                        value: 1,
+                        text: "PAC: R$ " + frete.pac.valor + " Prazo de entega: " + frete.pac.prazo + "dia(s) úteis após a postagem"
+                    }));
+                } else {
+                    $('select[name=frete]').append($('<option>', {
+                        value: 1,
+                        text: "PAC: " + frete.pac.erro.mensagem
+                    }));
+                }
+
+                if(errosedex == 0){
+                    $('select[name=frete]').append($('<option>', {
+                        value: 2,
+                        text: "SEDEX: R$ " + frete.sedex.valor + " Prazo de entega: " + frete.sedex.prazo + "dia(s) úteis após a postagem"
+                    }));
+                } else {
+                    $('select[name=frete]').append($('<option>', {
+                        value: 1,
+                        text: "SEDEX: " + frete.sedex.erro.mensagem
+                    }));
+                }
+
+                if(errosedexhoje == 0){
+                    $('select[name=frete]').append($('<option>', {
+                        value: 3,
+                        text: "SEDEX 10: R$ " + frete.sedex10.valor + " Prazo de entega: " + frete.sedex10.prazo + "dia(s) úteis após a postagem"
+                    }));
+                }else {
+                    $('select[name=frete]').append($('<option>', {
+                        value: 1,
+                        text: "SEDEX 10: " + frete.sedex10.erro.mensagem
+                    }));
+                }
+
+                if(errosedex10 == 0){
+                    $('select[name=frete]').append($('<option>', {
+                        value: 4,
+                        text: "SEDEX HOJE: R$ " + frete.sedexhoje.valor + " Prazo de entega: " + frete.sedexhoje.prazo + "dia(s) úteis após a postagem"
+                    }));
+                }else {
+                    $('select[name=frete]').append($('<option>', {
+                        value: 1,
+                        text: "SEDEX HOJE: " + frete.sedexhoje.erro.mensagem
+                    }));
+                }
+
+                $("#loader").hide();
+                $("select[name=frete]").show();
+            });
+        });
+    });*/
+    </script>
+@endsection

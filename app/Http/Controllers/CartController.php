@@ -57,29 +57,6 @@ class CartController extends Controller
         Session::set('cart', $cart);
 
         return redirect()->route('cart');
-    } 
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-       //
     }
 
     public function remove($id){
@@ -99,7 +76,6 @@ class CartController extends Controller
         } else {
 
             return redirect()->route('cart');
-        
         }
     }
 

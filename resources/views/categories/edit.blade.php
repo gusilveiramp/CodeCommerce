@@ -5,23 +5,14 @@
 
 		@include('alerts.alerts')
 
-		{!! Form::open(['route'=>['admin.categories.update', $category->id], 'method'=>'put']) !!}
+		{!! Form::model($category, ['route'=>['admin.categories.update', $category->id], 'method'=>'put']) !!}
 
-		<!-- Name Form Input -->
-		<div class="form-group">
-			{!! Form::label('name', 'Name:') !!}
-			{!! Form::text('name', $category->name, ['class'=>'form-control']) !!}
-		</div>
-
-		<!-- Description Form Input -->
-		<div class="form-group">
-			{!! Form::label('description', 'Description:') !!}
-			{!! Form::textarea('description', $category->description, ['class'=>'form-control']) !!}
-		</div>
+		@include('categories.partials._form')
 
 		<!-- Submit Button -->
 		<div class="form-group">
 			{!! Form::submit('Add Category', ['class'=>'btn btn-primary form-control']) !!}
+			<a href="{{ route('admin.categories') }}", class="btn btn-default">Back</a>
 		</div>
 
 		{!! Form::close() !!}

@@ -10,9 +10,10 @@
     					<tr class="cart_menu">
     						<td class="image">Item</td>
     						<td class="description"></td>
+                            <td class="color">Cor</th>
     						<td class="price">Price</td>
-    						<td class="price">Qtd</td>
-    						<td class="price">Total</td>
+    						<td class="qtd">Qtd</td>
+    						<td class="total">Total</td>
     						<td></td>
     					</tr>
     				</thead>
@@ -26,10 +27,15 @@
     								Imagem
     							</a>
     						</td>
+                           
     						<td class="cart_description">
     							<h4><a href="{{ route('store.product', ['id'=>$k]) }}">{{ $item['name'] }}</a></h4>
     							<p>Code: {{ $k }}</p>
     						</td>
+                            
+                            <td>
+                                <i class="fa fa-square fa-2x" style="color:{{ $item['color'] }}"></i>
+                            </td>
 
     						<td class="cart_price">
     							R$ {{ $item['price'] }}
@@ -50,7 +56,7 @@
     					</tr>
                     @empty
                         <tr>
-                            <td class="" colspan="5">
+                            <td class="" colspan="6">
                                 <br>
                                 <center><p>No items found. Go buy something!</p></center>
                             </td>
@@ -58,7 +64,7 @@
     				@endforelse
 
                     <tr class="cart_menu">
-                        <td colspan="6">
+                        <td colspan="7">
                             <div class="pull-right">
                                 <span>
                                     TOTAL: R$ {{ $cart->getTotal() }}

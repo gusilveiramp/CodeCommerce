@@ -20,7 +20,7 @@ class Cart
 		$this->items = [];
 	}
 
-	public function add($id, $name, $price)
+	public function add($id, $name, $price, $color)
 	{
 		// id -> qtd, price, name
 		$this->items += [
@@ -29,6 +29,7 @@ class Cart
 				'qtd' 	=> isset($this->items[$id]['qtd']) ? $this->items[$id]['qtd']++:1,
 				'price' => $price,
 				'name' 	=> $name,
+				'color' => isset($this->items[$id]['color']) ? $this->items[$id]['color'] = $color : $color
 			]
 		];
 

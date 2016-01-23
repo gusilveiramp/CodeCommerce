@@ -43,15 +43,19 @@ class CartController extends Controller
      * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function add($id)
+    public function add(Requests\CartRequest $request, $id)
     {   
         // trago o metodo
         $cart = $this->getCart();
 
         // Importo e pego o meu produto
         $product = Product::find($id);
+
+        // pego a cor
+        $color = $request->get('color');
+
         // adiciono o produto ao carrinho
-        $cart->add($id, $product->name, $product->price);
+        $cart->add($id, $product->name, $product->price, $color);
 
         // adiciono o carrinho alterado/final a minha sessão
         Session::set('cart', $cart);

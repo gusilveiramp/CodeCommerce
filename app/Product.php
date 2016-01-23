@@ -53,6 +53,12 @@ class Product extends Model implements SluggableInterface
         return $this->belongsToMany('CodeCommerce\Tag', 'product_tag');
     }
 
+    // Este metodo tráz as tags relacionadas ao produto em questão.
+    public function colors()
+    {
+        return $this->belongsToMany('CodeCommerce\Color', 'product_color');
+    }
+
     // Este método exibe as tags vindas do bd na view edit.blade.php e create.blade.php.
     // getTagListAttribute é um atributo dinamico, portanto as palavras get e Attribute são obrigatórias no nome da função.
     // e o nome que vai entre elas (TagList, nesse caso), é o nome do nosso atributo dinâmico.
@@ -63,6 +69,14 @@ class Product extends Model implements SluggableInterface
         $tags = $this->tags()->lists('name')->all();
         // retorno as tags separadas por uma virgula e um espaço.
         return implode(', ', $tags);
+    }
+
+    public function getColorListAttribute()
+    {
+        // crio uma lista dos nomes de tags e mando trazer todos em array pelo all();
+        $colors = $this->colors()->lists('name')->all();
+        // retorno as tags separadas por uma virgula e um espaço.
+        return $colors;
     }
 
     // ESSA FUNÇÃO É PRATICA QUANDO QUEREMOS COMPARAR VALORES DE COLUNAS DE UMA MESMA TABELA.

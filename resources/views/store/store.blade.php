@@ -8,7 +8,7 @@
     <title>Home | E-Shop</title>
    
     <link href="{{ elixir('css/all.css') }}" rel="stylesheet">
-
+    @yield('styles')
 </head><!--/head-->
 
 <body>

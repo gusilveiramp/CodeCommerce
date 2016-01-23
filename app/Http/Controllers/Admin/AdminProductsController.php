@@ -7,6 +7,7 @@ use CodeCommerce\Http\Requests;
 use CodeCommerce\Http\Controllers\Controller;
 use CodeCommerce\Product;
 use CodeCommerce\Tag;
+use CodeCommerce\Color;
 use CodeCommerce\ProductImage;
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Request;
@@ -66,6 +67,7 @@ class AdminProductsController extends Controller
         // existem ou não.
         // O metodo tags() está vindo do model product.
         $product->tags()->sync($this->getTagsIds($request->tags));
+        $product->colors()->sync($this->getColorsIds($request->color));
 
         return redirect()->route('admin.products');
     }
@@ -76,7 +78,7 @@ class AdminProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, Category $category, Tag $tag)
+    public function edit($id, Category $category, Tag $tag, Color $color)
     {
         // envio as categorias para a view products.create
         $categories = $category->lists('name', 'id');
@@ -85,7 +87,9 @@ class AdminProductsController extends Controller
 
         $tags = $tag->lists('name');
 
-        return view('products.edit', compact('product', 'categories', 'tags'));
+        $colors = $color->lists('name');
+
+        return view('products.edit', compact('product', 'categories', 'tags', 'colors'));
     }
 
     /**
@@ -104,6 +108,7 @@ class AdminProductsController extends Controller
         $this->model->find($id)->update($request->all());
         $product = $this->model->find($id);
         $product->tags()->sync($this->getTagsIds($request->tags));
+        $product->colors()->sync($this->getColorsIds($request->color));
 
         return redirect()->route('admin.products');
     }
@@ -227,5 +232,22 @@ class AdminProductsController extends Controller
         }
 
         return $tagsIds;
+    }
+
+    private function getColorsIds($colors)
+    {
+        $colorsIds = [];
+
+        // se o array de cor estiver vazio, define a cor padrão como PRETO.
+        if($colors == null || $colors == ''){
+            $colors[0] = '#000000';
+        }
+        
+        foreach ($colors as $color)
+        {
+            $colorsIds[] = Color::firstOrCreate(['name'=> $color])->id;
+        }
+
+        return $colorsIds;
     }
 }

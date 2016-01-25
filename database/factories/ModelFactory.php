@@ -32,7 +32,7 @@ $factory->define(CodeCommerce\Product::class, function (Faker\Generator $faker) 
         'name' => $faker->word,
         'description' => $faker->sentence,
         'price' => $faker->randomNumber(2),
-        'featured' => $faker->boolean,
+        'featured' => 1,
         'recommended' => $faker->boolean,
         'category_id' => 1,
     ];

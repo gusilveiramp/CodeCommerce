@@ -23,6 +23,6 @@ class Color extends Model
     	// Esta tag pertence a muitos produtos.
     	// Este metodo tráz os produtos relacionados a tag em questão.
     	// 'product_tag' é a tabela que está fazendo os relacionamentos.
-    	return $this->belongsToMany('CodeCommerce\Product', 'product_color');
+    	return $this->belongsToMany('CodeCommerce\Product', 'product_colors');
     }
 }

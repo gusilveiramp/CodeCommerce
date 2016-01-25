@@ -34,6 +34,19 @@ $factory->define(CodeCommerce\Product::class, function (Faker\Generator $faker) 
         'price' => $faker->randomNumber(2),
         'featured' => $faker->boolean,
         'recommended' => $faker->boolean,
-        'category_id' => $faker->numberBetween(1, 3),
+        'category_id' => 1,
+    ];
+});
+
+$factory->define(CodeCommerce\Color::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->hexcolor,
+    ];
+});
+
+$factory->define(CodeCommerce\ProductColor::class, function (Faker\Generator $faker) {
+    return [
+        'product_id' => 1,
+        'color_id' => 1,
     ];
 });

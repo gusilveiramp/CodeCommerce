@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use CodeCommerce\Category;
+use CodeCommerce\Color;
 
-class CategoryTableSeeder extends Seeder
+class ColorTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,8 +13,8 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories');//Trucante limpa a tabela de categorias
+        DB::table('colors');//Trucante limpa a tabela de categorias
 
-        factory('CodeCommerce\Category', 1)->create();
+        factory('CodeCommerce\Color', 1)->create();
     }
 }

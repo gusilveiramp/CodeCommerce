@@ -25,6 +25,6 @@ class UserTableSeeder extends Seeder
         	]
         );
         
-        factory('CodeCommerce\User', 3)->create();
+        factory('CodeCommerce\User', 1)->create();
     }
 }

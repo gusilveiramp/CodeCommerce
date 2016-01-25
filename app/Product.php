@@ -56,7 +56,7 @@ class Product extends Model implements SluggableInterface
     // Este metodo tráz as tags relacionadas ao produto em questão.
     public function colors()
     {
-        return $this->belongsToMany('CodeCommerce\Color', 'product_color');
+        return $this->belongsToMany('CodeCommerce\Color', 'product_colors');
     }
 
     // Este método exibe as tags vindas do bd na view edit.blade.php e create.blade.php.

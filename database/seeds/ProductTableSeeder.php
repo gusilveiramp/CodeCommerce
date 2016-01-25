@@ -15,6 +15,6 @@ class ProductTableSeeder extends Seeder
     {
         DB::table('products');//Trucante limpa a tabela de categorias
 
-       	factory('CodeCommerce\Product', 3)->create();
+       	factory('CodeCommerce\Product', 1)->create();
     }
 }

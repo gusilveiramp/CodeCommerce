@@ -18,7 +18,7 @@
 			<div class="input_fields_wrap" id="wrap">
 			<a href="#" class="add_field_button"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add new</a>
 			<div>
-				{!! Form::input('color', 'name', null) !!}
+				<input type="color" name="color[]" value="#000000">
 				<a href="#" class="remove_field"><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> Remove</a>
 			</div>
 			</div>

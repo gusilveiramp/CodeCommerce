@@ -14,7 +14,7 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('name')->unique();
+            $table->string('name', 255)->unique();
             $table->timestamps();
         });
     }

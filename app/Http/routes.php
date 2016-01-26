@@ -71,7 +71,7 @@ Route::get('product/{id}', ['as'=>'store.product', 'uses'=>'StoreController@prod
 Route::get('search',['as'=>'store.search', 'uses'=>'StoreController@search']);
 Route::get('tag/{id}', ['as'=>'store.tag', 'uses'=>'TagController@index']);
 Route::get('cart', ['as'=>'cart', 'uses'=>'CartController@index']);
-Route::post('cart/add/{id}', ['as'=>'cart.add', 'uses'=>'CartController@add']);
+Route::get('cart/add/{id}', ['as'=>'cart.add', 'uses'=>'CartController@add']);
 Route::get('cart/remove/{id}', ['as'=>'cart.remove', 'uses'=>'CartController@remove']);
 Route::get('cart/destroy/{id}', ['as'=>'cart.destroy', 'uses'=>'CartController@destroy']);
 
@@ -81,9 +81,9 @@ Route::group(['middleware'=>'auth'], function(){
 	Route::get('account/orders', ['as'=>'account.orders', 'uses'=>'AccountController@orders']);
 });
 
-Route::post('test', ['as'=>'checkout.frete', 'uses'=>'CheckoutController@test']);
+//Route::post('test', ['as'=>'checkout.frete', 'uses'=>'CheckoutController@test']);
 
-Route::get('get-fretes/{cep}', ['as'=>'cart.destroy', 'uses'=>'CheckoutController@getFretes']);
+//Route::get('cart', ['as'=>'cart.destroy', 'uses'=>'CheckoutController@getFretes']);
 
 /*
 Route::get('evento', function(){

@@ -42,9 +42,9 @@
     						</td>
 
     						<td class="cart_quantity">
-    						<a href="{{ route('cart.add', ['id'=>$k]) }}" class="cart_quantity_delete"><span class="glyphicon glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+    						<a href="{{ route('cart.add', ['id'=>$k, 'color'=>$item['color']]) }}" class="cart_quantity_delete"><span class="glyphicon glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
                                 {{ $item['qtd'] }}
-                            <a href="{{ route('cart.remove', ['id'=>$k]) }}" class="cart_quantity_delete"><span class="glyphicon glyphicon glyphicon-minus-sign disabled" aria-hidden="true"></span></a>
+                            <a href="{{ route('cart.remove', ['id'=>$k, 'color'=>$item['color']]) }}" class="cart_quantity_delete"><span class="glyphicon glyphicon glyphicon-minus-sign disabled" aria-hidden="true"></span></a>
     						</td>
 
     						<td class="cart_total">

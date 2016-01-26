@@ -51,7 +51,7 @@
 
                 <p>{{ $product->description }}</p>
 
-                {!! Form::open(['route'=>['cart.add', $product->id], 'method'=>'post']) !!}
+                {!! Form::open(['route'=>['cart.add', $product->id], 'method'=>'get']) !!}
                 <span>
 
                 <!-- cor -->

@@ -5,6 +5,7 @@ namespace CodeCommerce\Http\Controllers;
 use CodeCommerce\Cart;
 use CodeCommerce\Product;
 use CodeCommerce\Http\Requests;
+use Illuminate\Http\Request;
 //use CodeCommerce\Http\Controllers\Controller;
 
 //use Illuminate\Http\Request;
@@ -43,7 +44,7 @@ class CartController extends Controller
      * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function add(Requests\CartRequest $request, $id)
+    public function add(Request $request, $id)
     {   
         // trago o metodo
         $cart = $this->getCart();
@@ -54,11 +55,16 @@ class CartController extends Controller
         // pego a cor
         $color = $request->get('color');
 
-        // adiciono o produto ao carrinho
-        $cart->add($id, $product->name, $product->price, $color);
+        // verifico se a cor é formato HEX
+        if (preg_match('/^#[a-f0-9]{6}$/i', $color)) {
+            // adiciono o produto ao carrinho
+            $cart->add($id, $product->name, $product->price, $color);
 
-        // adiciono o carrinho alterado/final a minha sessão
-        Session::set('cart', $cart);
+            // adiciono o carrinho alterado/final a minha sessão
+            Session::set('cart', $cart);
+        } else {
+            return redirect()->route('store.product', ['id'=>$id])->withError('Por favor, selecione uma Cor para o produto!');
+        }
 
         return redirect()->route('cart');
     }

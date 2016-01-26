@@ -18,8 +18,15 @@
                     <h2>R$ {{ $product->price }}</h2>
                     <p>{{ $product->name }}</p>
                     <a href="{{ route('store.product', ['id'=>$product->id]) }}" class="btn btn-default add-to-cart"><i class="fa fa-crosshairs"></i>Mais detalhes</a>
+                    
+                    <!-- 
+                        PROFESSOR, COMO ESTOU TRABALHANDO COM CORES NO CART, EU REMOVI O BOTÃO DA HOMEPAGE.
+                        CASO CONTRÁRIO, EU PRECISARIA DAR AO USUÁRIO A OPÇÃO DE SELECIONAR A COR NA HOMEPAGE
+                        O QUE NÃO TEM NECESSIDADE NESTE MOMENTO.
+                    -->
 
                     <!--<a href="{{ route('cart.add', ['id'=>$product->id]) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Adicionar no carrinho</a>-->
+
                 </div>
             </div>
         </div>
